@@ -1,9 +1,8 @@
 <script setup lang="ts">
-
 </script>
 
 <template>
-  <RouterView />
+    hej
 </template>
 
-
+<style scoped lang="scss"></style>
