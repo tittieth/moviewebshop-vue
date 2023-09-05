@@ -4,40 +4,37 @@
 
 <template>
     <div class="order-form">
-        <h2>Formulär</h2>
-
+        <h2>Dina uppgifter</h2>
         <form>
-            <label>
-                <span>Förnamn</span><br/>
-                <input type="text" />
-            </label>
-            <label>
-                <span>Efternamn</span><br/>
-                <input type="text" />
-            </label>
-            <label>
-                <span>Mailadress</span><br/>
-                <input type="email" />
-            </label>        
-            <label>
-                <span>Telefonnummer</span><br/>
-                <input type="tel" />
-            </label>  
-            
-            <span>Betalsätt</span> <!-- Lägg till v-if om kort är vald, input för kortnummer-->
-            <div class="payment-method-container">
                 <label>
-                  <span>Swish</span><br />
-                  <input type="radio" name="payment_method" />
+                    <span>Förnamn</span><br/>
+                    <input type="text" />
                 </label>
                 <label>
-                  <span>Kort</span><br />
-                  <input type="radio" name="payment_method" />
+                    <span>Efternamn</span><br/>
+                    <input type="text" />
                 </label>            
-            </div>
-            <button>Köp</button>
+                <label>
+                    <span>Mailadress</span><br/>
+                    <input type="email" />
+                </label>        
+                <label>
+                    <span>Telefonnummer</span><br/>
+                    <input type="tel" />
+                </label> 
+                <span id="payment-text">Betalsätt</span> <!-- Lägg till v-if om kort är vald, input för kortnummer-->
+                <div class="payment-method-container">
+                    <label>
+                      <span>Swish</span><br />
+                      <input type="radio" name="payment_method" />
+                    </label>
+                    <label>
+                      <span>Kort</span><br />
+                      <input type="radio" name="payment_method" />
+                    </label>            
+                </div>
+                <button>Köp</button>        
         </form>
-
     </div>
 
 </template>
@@ -76,6 +73,10 @@ input {
     width: 240px;
 }
 
+button {
+    max-width: 100px;
+}
+
 .payment-method-container {
     display: flex;
     flex-direction: row;
@@ -91,6 +92,49 @@ input {
         max-width: 50px;
         height: 16px;
     }
+}
+
+@media screen and (min-width: 1024px) {
+  .order-form {
+    background-color: #9D0B28;
+  }
+
+  form {
+    display: grid;
+    grid-template-columns: 0.5fr 0.5fr;
+    gap: 30px;
+  }
+
+
+  h2 {
+    font-size: 48px;
+  }
+
+  button {
+    font-size: 24px;
+    min-width: 150px;
+    height: 48px;
+  }
+
+  input {
+    height: 40px;
+  }
+
+  span {
+    font-size: 24px;
+
+  }
+
+  #payment-text {
+    position: relative;
+    left: 85%;
+  }
+
+  .payment-method-container {
+    position: relative;
+    left: -50%;
+  }
+  
 }
 
 
