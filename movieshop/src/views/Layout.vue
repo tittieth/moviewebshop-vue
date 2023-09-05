@@ -2,12 +2,15 @@
     <div>
         <NavView></NavView>
       <main>
-        <router-view></router-view>
+        <router-view>
+          <OrderForm></OrderForm>
+        </router-view>
       </main>
     </div>
   </template>
   
   <script setup lang="ts">
-    import NavView from "./NavView.vue";
+    import OrderForm from "@/components/OrderForm.vue";
+import NavView from "./NavView.vue";
   </script>
   
