@@ -1,5 +1,9 @@
 <script></script>
 
 <template>
-    hej
+   
 </template>
+
+<style scoped lang="scss">
+    
+</style>
