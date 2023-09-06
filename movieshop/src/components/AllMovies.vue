@@ -46,6 +46,8 @@ import { type ICategory } from '@/models/ICategory';
         <ul class="movies">
           <li v-for="movie in movies" :key="movie.id" @click.prevent="() => handleClick(movie)">
             <img v-if="movie.productCategory.some(cat => cat.categoryId === category.id)" :src="movie.imageUrl" height="50" width="50">
+            <p>{{ movie.name }}</p>
+            <button>Köp film</button>
           </li>
         </ul>
       </div>
@@ -56,39 +58,58 @@ import { type ICategory } from '@/models/ICategory';
 <style scoped lang="scss">
 h2 {
     color: FDE4E4;
-    font-size: 1rem;
+    font-size: 2rem;
 }
 .wrapper {
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: pink;
     width: 100%;
     text-align: center;
 
 }
 .category {
-    background-color: aqua;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 50px;
     padding: 10px;
+
+    ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 50px;
+        list-style: none;
+        width: 100%;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+
+        li {
+            cursor: pointer;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            img {
+                width: 150px;
+                height: 200px;
+                margin: 10px;
+            }
+
+            button {
+                width: 105px;
+                height: 25px;
+                margin: 10px 0;
+            }
+        
+        }
+    }
 }
 
-.movies {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 50px;
-    list-style: none;
-    width: 100%;
-    flex-wrap: nowrap;
-    overflow-x: auto;
 
-}
 
 </style>
