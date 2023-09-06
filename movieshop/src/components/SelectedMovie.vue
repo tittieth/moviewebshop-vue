@@ -15,7 +15,10 @@ const props = defineProps({
     <div class="selected-movie-container">
       <h2>Vald film</h2>
       <div v-if="selectedMovie" class="selected-movie">
-        <img :src="selectedMovie.imageUrl" alt="Movie Poster" height="280" width="280" />
+        <div class="image-container">
+            <img :src="selectedMovie.imageUrl" alt="Movie Poster" height="280" width="280" /> 
+        </div>
+
 
         <div class="movie-info">
             <h3>{{ selectedMovie.name }}</h3>
@@ -54,9 +57,17 @@ const props = defineProps({
     margin: 10px;
   }
 
-  img {
-    margin: auto;
-  }
+  .image-container {
+        grid-area: img;
+        width: 200px;
+        margin: auto;
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
 
   ul {
     list-style-type: none;
@@ -75,7 +86,8 @@ const props = defineProps({
   @media screen and (min-width: 1024px) {
 
     h2 {
-        margin-top: 10vh;
+        margin: 20px 0 30px 0;
+        font-size: 48px;
     }
     .selected-movie {
         display: grid;
@@ -84,12 +96,12 @@ const props = defineProps({
         ". img movieinfo ."
         ". moviedesc moviedesc ."
         ". . . .";
-        width: 50vw;
-        margin-top: 10vh;
+        margin: 20px;
+        margin-top: 10px;
     }
 
-    img {
-        grid-area: img;
+    .image-container {
+        width: 300px;
     }
 
     .movie-info {
@@ -99,16 +111,37 @@ const props = defineProps({
 
         h3 {
             margin-left: 15px;
+            font-size: 32px;
         }
 
         ul {
             list-style-type: disc;
+
+            li {
+                font-size: 24px;
+            }
+        }
+
+        button {
+            font-size: 24px;
+            min-width: 150px;
+            height: 48px;
         }
     }
 
     .movie-description {
         grid-area: moviedesc;
         margin-top: 50px;
+
+        h4 {
+            font-size: 28px;
+        }
+
+        p {
+            font-size: 20px;
+            text-align: left;
+            width: 30vw;
+        }
     }
 
   }
