@@ -5,6 +5,8 @@
 > Yesterday I…, today I will…, I need help with…, I'm stuck with…, TIL…
 
 ### Evelina
+- Igår skapade jag html och stylade formuläret.
+- Idag ska jag validera formuläret och lägga till funktionalitet för radioknappar.
 
 
 ### Tittie 
