@@ -43,7 +43,7 @@ const selectedPayment = ref("");
                 </label>              
                 <label>
                     <span>Mailadress</span><br/>
-                    <Field name="mail" type="email" />
+                    <Field name="" type="email" />
                 </label>        
                 <label>
                     <span>Telefonnummer</span><br/>
@@ -90,19 +90,6 @@ form {
     padding: 20px;
 }
 
-input {
-    background-color: #33030D;
-    color: #FDE4E4;
-    border-radius: 60px;
-    border: 1px solid #5A082D;
-
-    margin: 5px 0 30px 0;
-    padding: 8px;
-
-    height: 32px;
-    width: 240px;
-}
-
 button {
     max-width: 100px;
 }
@@ -135,7 +122,6 @@ button {
     gap: 30px;
   }
 
-
   h2 {
     font-size: 48px;
   }
@@ -164,10 +150,5 @@ button {
     position: relative;
     left: -50%;
   }
-
-
-  
 }
-
-
 </style>
