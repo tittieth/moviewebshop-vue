@@ -13,7 +13,15 @@
                 <label>
                     <span>Efternamn</span><br/>
                     <input type="text" />
-                </label>            
+                </label>
+                <label>
+                    <span>Adress</span><br/>
+                    <input type="text" />
+                </label>
+                <label>
+                    <span>Postnummer</span><br/>
+                    <input type="text" />
+                </label>              
                 <label>
                     <span>Mailadress</span><br/>
                     <input type="email" />
@@ -25,7 +33,7 @@
                 <span id="payment-text">Betalsätt</span> <!-- Lägg till v-if om kort är vald, input för kortnummer-->
                 <div class="payment-method-container">
                     <label>
-                      <span>Swish</span><br />
+                      <span>Faktura</span><br />
                       <input type="radio" name="payment_method" />
                     </label>
                     <label>
@@ -33,7 +41,22 @@
                       <input type="radio" name="payment_method" />
                     </label>            
                 </div>
-                <button>Köp</button>        
+                <label>
+                    <span>Kortnummer</span><br/>
+                    <input type="text" />
+                </label> 
+                <label>
+                    <span>Datum/år</span><br/>
+                    <input type="date" />
+                </label>
+                <label>
+                    <span>CVC</span><br/>
+                    <input type="text" />
+                </label> 
+
+                <button>Köp</button>   
+                
+
         </form>
     </div>
 
