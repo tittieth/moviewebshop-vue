@@ -21,5 +21,7 @@
 </template>
 
 <style scoped lang="scss">
-
+  .small-input {
+    max-width: 100px;
+  }
 </style>

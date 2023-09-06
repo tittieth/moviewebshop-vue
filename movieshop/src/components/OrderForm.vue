@@ -1,61 +1,70 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import { Form, Field } from 'vee-validate';
 import  CardInputs  from '../components/CardInputs.vue'
 
+export default {
+  components: {
+    Form,
+    Field,
+  },
+  methods: {
+    onSubmit() {
+      console.log('Submitting :(');
+    },
+  },
+};
 
 const selectedPayment = ref("");
 
-const handleSubmit = () => {
-  console.log("Hej");
-  
-}
+
 
 </script>
 
 <template>
     <div class="order-form">
         <h2>Dina uppgifter</h2>
-        <form @submit.prevent="handleSubmit">
+        <Form @submit="onSubmit">
                 <label>
                     <span>Förnamn</span><br/>
-                    <input type="text" />
+                    <Field name="firstname" type="text" />
                 </label>
                 <label>
                     <span>Efternamn</span><br/>
-                    <input type="text" />
+                    <Field name="lastname" type="text" />
                 </label>
                 <label>
                     <span>Adress</span><br/>
-                    <input type="text" />
+                    <Field name="address" type="text" />
                 </label>
                 <label>
                     <span>Postnummer</span><br/>
-                    <input type="text" />
+                    <Field name="postNumber" type="text" />
                 </label>              
                 <label>
                     <span>Mailadress</span><br/>
-                    <input type="email" />
+                    <Field name="mail" type="email" />
                 </label>        
                 <label>
                     <span>Telefonnummer</span><br/>
-                    <input type="tel" />
+                    <Field name="phoneNumber" type="tel" />
                 </label> 
                 <span id="payment-text">Betalsätt</span>
                 <div class="payment-method-container">
                     <label>
                       <span>Faktura</span><br />
-                      <input type="radio" name="payment_method" v-model="selectedPayment" value="bill" />
+                      <Field type="radio" name="payment_method" v-model="selectedPayment" value="bill" />
                     </label>
                     <label>
                       <span>Kort</span><br />
-                      <input type="radio" name="payment_method" v-model="selectedPayment" value="card" />
+                      <Field type="radio" name="payment_method" v-model="selectedPayment" value="card" />
                     </label>            
                 </div>
 
                 <CardInputs v-if="selectedPayment === 'card'" />
 
                 <button>Köp</button>   
-        </form>
+        </Form>
     </div>
 
 </template>
@@ -156,9 +165,7 @@ button {
     left: -50%;
   }
 
-  .small-input {
-    max-width: 100px;
-  }
+
   
 }
 
