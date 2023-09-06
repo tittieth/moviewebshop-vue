@@ -8,8 +8,8 @@ export interface IMovie {
     imageUrl: string;
     year: number;
     added: string;
-    productCategory: [{
+    productCategory: [
         categoryId: number,
         category: string
-    }]
+    ]
 }

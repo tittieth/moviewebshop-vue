@@ -45,9 +45,11 @@ import { type ICategory } from '@/models/ICategory';
         <h2>{{ category.name }}</h2>
         <ul class="movies">
           <li v-for="movie in movies" :key="movie.id" @click.prevent="() => handleClick(movie)">
-            <img v-if="movie.productCategory.some(cat => cat.categoryId === category.id)" :src="movie.imageUrl" height="50" width="50">
-            <p>{{ movie.name }}</p>
-            <button>Köp film</button>
+            <div v-if="movie.productCategory.some(cat => cat.categoryId === category.id)">
+                <img :src="movie.imageUrl" height="50" width="50">
+                <p>{{ movie.name }}</p>
+                <button>Köp film</button>
+            </div>
           </li>
         </ul>
       </div>
@@ -87,23 +89,38 @@ h2 {
         flex-wrap: nowrap;
         overflow-x: auto;
 
-        li {
+        li{
             cursor: pointer;
             text-align: left;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            flex-wrap: wrap;
+            position: relative;
 
-            img {
+            div {
+                display: flex;
+                flex-direction: column;
+                min-height: 300px;
+                
+                img {
                 width: 150px;
                 height: 200px;
                 margin: 10px;
             }
 
-            button {
-                width: 105px;
-                height: 25px;
-                margin: 10px 0;
+                p {
+                    padding: 0 10px;
+                    font-size: 0.8rem;
+                }
+
+                button {
+                    position: absolute;
+                    width: 105px;
+                    height: 25px;
+                    bottom: 0;
+                    
+                }
             }
         
         }
