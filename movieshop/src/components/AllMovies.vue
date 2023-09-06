@@ -3,6 +3,8 @@ import { onMounted, ref } from 'vue';
 import type { IMovie } from "../models/IMovie";
 import ActionMovies from '../components/ActionMovies.vue';
 import { getMovies } from '../services/MovieService'
+import MovieHeader from '../components/MovieHeader.vue';
+
 
     const movies = ref<IMovie[]>([]);
 
@@ -22,6 +24,7 @@ import { getMovies } from '../services/MovieService'
 </script>
 
 <template>
+    <MovieHeader />
     <ActionMovies :moviesByCategory="movie"></ActionMovies>
 </template>
 
