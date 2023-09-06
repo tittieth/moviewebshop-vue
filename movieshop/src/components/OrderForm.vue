@@ -1,11 +1,20 @@
 <script setup lang="ts">
+import { ref } from 'vue';
+
+
+const selectedPayment = ref("");
+
+const handleSubmit = () => {
+  console.log("Choklad");
+  
+}
 
 </script>
 
 <template>
     <div class="order-form">
         <h2>Dina uppgifter</h2>
-        <form>
+        <form @submit.prevent="handleSubmit">
                 <label>
                     <span>Förnamn</span><br/>
                     <input type="text" />
@@ -34,25 +43,29 @@
                 <div class="payment-method-container">
                     <label>
                       <span>Faktura</span><br />
-                      <input type="radio" name="payment_method" />
+                      <input type="radio" name="payment_method" v-model="selectedPayment" value="bill" />
                     </label>
                     <label>
                       <span>Kort</span><br />
-                      <input type="radio" name="payment_method" />
+                      <input type="radio" name="payment_method" v-model="selectedPayment" value="card" />
                     </label>            
                 </div>
-                <label>
+
+                <div class="card-chosen" v-if="selectedPayment === 'card'">
+                  <label>
                     <span>Kortnummer</span><br/>
                     <input type="text" />
-                </label> 
-                <label>
-                    <span>Datum/år</span><br/>
+                  </label> 
+                  <label>
+                     <span>Datum/år</span><br/>
                     <input type="date" />
-                </label>
-                <label>
+                  </label>
+                  <label>
                     <span>CVC</span><br/>
                     <input type="text" />
-                </label> 
+                  </label>                 
+                </div>
+
 
                 <button>Köp</button>   
                 
