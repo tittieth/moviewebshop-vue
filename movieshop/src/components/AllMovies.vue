@@ -3,6 +3,7 @@ import { onMounted, ref } from 'vue';
 import axios from 'axios';
 import type { IMovie } from "../models/IMovie";
 import ActionMovies from '../components/ActionMovies.vue';
+import MovieHeader from '../components/MovieHeader.vue';
 
     const movies = ref<IMovie[]>([]);
 
@@ -23,6 +24,7 @@ import ActionMovies from '../components/ActionMovies.vue';
 </script>
 
 <template>
+    <MovieHeader />
     <ActionMovies :moviesByCategory="movie"></ActionMovies>
 </template>
 
