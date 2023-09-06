@@ -47,8 +47,8 @@ import { type ICategory } from '@/models/ICategory';
           <li v-for="movie in movies" :key="movie.id" @click.prevent="() => handleClick(movie)">
             <img v-if="movie.productCategory.some(cat => cat.categoryId === category.id)" :src="movie.imageUrl" height="50" width="50">
             <p>{{ movie.name }}</p>
-            <RouterLink to="/movie/:id">
-                <button>Köp film</button>
+            <RouterLink :to="{ name: 'movie', params: { id: movie.id }, query: { selectedMovie: JSON.stringify(movie) } }">
+              <button>Köp film</button>
             </RouterLink>
             
           </li>
