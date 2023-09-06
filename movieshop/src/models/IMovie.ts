@@ -5,8 +5,11 @@ export interface IMovie {
     name: string;
     description: string;
     price: number;
-    iamgeUrl: string;
+    imageUrl: string;
     year: number;
     added: string;
-    productCategory: ICategory;
+    productCategory: [{
+        categoryId: number,
+        category: string
+    }]
 }
