@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import  CardInputs  from '../components/CardInputs.vue'
 
 
 const selectedPayment = ref("");
 
 const handleSubmit = () => {
-  console.log("Choklad");
+  console.log("Hej");
   
 }
 
@@ -39,7 +40,7 @@ const handleSubmit = () => {
                     <span>Telefonnummer</span><br/>
                     <input type="tel" />
                 </label> 
-                <span id="payment-text">Betalsätt</span> <!-- Lägg till v-if om kort är vald, input för kortnummer-->
+                <span id="payment-text">Betalsätt</span>
                 <div class="payment-method-container">
                     <label>
                       <span>Faktura</span><br />
@@ -51,20 +52,8 @@ const handleSubmit = () => {
                     </label>            
                 </div>
 
-                <div class="card-chosen" v-if="selectedPayment === 'card'">
-                  <label>
-                    <span>Kortnummer</span><br/>
-                    <input type="text" />
-                  </label> 
-                  <label>
-                     <span>Datum/år</span><br/>
-                    <input type="date" class="small-input" />
-                  </label>
-                  <label>
-                    <span>CVC</span><br/>
-                    <input type="text" class="small-input" />
-                  </label>                 
-                </div>
+                <CardInputs v-if="selectedPayment === 'card'" />
+
                 <button>Köp</button>   
         </form>
     </div>
