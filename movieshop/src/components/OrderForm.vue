@@ -58,18 +58,14 @@ const handleSubmit = () => {
                   </label> 
                   <label>
                      <span>Datum/år</span><br/>
-                    <input type="date" />
+                    <input type="date" class="small-input" />
                   </label>
                   <label>
                     <span>CVC</span><br/>
-                    <input type="text" />
+                    <input type="text" class="small-input" />
                   </label>                 
                 </div>
-
-
                 <button>Köp</button>   
-                
-
         </form>
     </div>
 
@@ -169,6 +165,10 @@ button {
   .payment-method-container {
     position: relative;
     left: -50%;
+  }
+
+  .small-input {
+    max-width: 100px;
   }
   
 }
