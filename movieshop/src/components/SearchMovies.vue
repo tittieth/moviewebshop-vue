@@ -90,7 +90,19 @@ h3 {
 }
 
 @media screen and (min-width: 1024px) {
+    .search-results-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 5% 20%;
+        border: 1px solid #5A082D;
+        border-radius: 20px 20px 0 0;
 
+        div {
+            flex: 30%;
+
+        }
+    }
 }
 
 </style>
