@@ -21,6 +21,7 @@ const router = createRouter({
           path: "/movie/:id",
           name: "movie",
           component: MovieView,
+          props: true,
         }
       ]
     },

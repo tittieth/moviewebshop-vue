@@ -54,7 +54,9 @@ import { type ICategory } from '@/models/ICategory';
             <div v-if="movie.productCategory.some(cat => cat.categoryId === category.id)">
                 <img :src="movie.imageUrl" height="50" width="50" @error="handleImgError(movie)">
                 <p>{{ movie.name }}</p>
-                <button @click.prevent="addToCart(movie)">Köp film</button>
+                <RouterLink :to="{ name: 'movie', params: { id: movie.id }, query: { selectedMovie: JSON.stringify(movie) } }">
+                  <button @click.prevent="addToCart(movie)">Köp film</button>
+                </RouterLink>
             </div>
           </li>
         </ul>
