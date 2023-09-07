@@ -14,10 +14,7 @@ const incrementAmount = (item: ICart) => {
 }
 
 const removeItem = (item: ICart) => {
-  const index = cart.value.findIndex((cartItem) => cartItem.productId === item.productId)
-  if (index !== -1) {
-    cart.value.splice(index, 1)
-  }
+  cart.value = cart.value.filter((cartItem) => cartItem.productId !== item.productId)
 }
 
 const totalCartPrice = computed(() => {

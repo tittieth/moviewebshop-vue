@@ -12,14 +12,16 @@ const addToCart = () => {
   if (props.movie) {
     console.log('tillagd i varukorgen: ', props.movie.name)
     const { id, name, price, imageUrl } = props.movie
-
-    const existingProduct = cart.value.find((item) => item.productId === id)
+    const cartCopy = [...cart.value]
+    const existingProduct = cartCopy.find((item) => item.productId === id)
 
     if (existingProduct) {
       existingProduct.amount++
     } else {
-      cart.value.push({ productId: id, product: name, amount: 1, price, imageUrl: imageUrl })
+      cartCopy.push({ productId: id, product: name, amount: 1, price, imageUrl: imageUrl })
     }
+
+    cart.value = cartCopy
   } else {
     console.log('error')
   }
