@@ -2,11 +2,12 @@
 import { onMounted, ref } from 'vue';
 import ActionMovies from '../components/ActionMovies.vue';
 import MovieHeader from '../components/MovieHeader.vue';
-
-import { useMoviesStore } from '@/stores/movies'
+import { handleImgError } from '@/helpers/index'
+// import { useMoviesStore } from '@/stores/movies'
 import type { IMovie } from '@/models/IMovie';
 import { getCategories, getMovies } from '@/services/MovieService';
 import { type ICategory } from '@/models/ICategory';
+
 
 // const moviesStore = useMoviesStore();
 // const movies = moviesStore.movies;
@@ -32,9 +33,14 @@ import { type ICategory } from '@/models/ICategory';
     })
 
     const handleClick = (movie: IMovie) => {
-        console.log('clicked movie' + movie.id);
+        console.log('clicked movie', movie.id);
+    };
+
+    const addToCart = (movie: IMovie) => {
+        console.log('tillagd i varukorgen' + movie.price);
         
     }
+
 
 </script>
 
@@ -44,11 +50,11 @@ import { type ICategory } from '@/models/ICategory';
       <div v-for="category in categories" :key="category.id" class="category">
         <h2>{{ category.name }}</h2>
         <ul class="movies">
-          <li v-for="movie in movies" :key="movie.id" @click.prevent="() => handleClick(movie)">
+          <li v-for="movie in movies" :key="movie.id" @click.prevent="handleClick(movie)">
             <div v-if="movie.productCategory.some(cat => cat.categoryId === category.id)">
-                <img :src="movie.imageUrl" height="50" width="50">
+                <img :src="movie.imageUrl" height="50" width="50" @error="handleImgError(movie)">
                 <p>{{ movie.name }}</p>
-                <button>Köp film</button>
+                <button @click.prevent="addToCart(movie)">Köp film</button>
             </div>
           </li>
         </ul>
@@ -82,43 +88,45 @@ h2 {
     ul {
         display: flex;
         flex-direction: row;
-        justify-content: center;
+        padding: 0;
+        margin-inline-start: 0;
         margin-top: 50px;
         list-style: none;
         width: 100%;
-        flex-wrap: nowrap;
         overflow-x: auto;
 
         li{
             cursor: pointer;
             text-align: left;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            flex-wrap: wrap;
             position: relative;
 
             div {
                 display: flex;
                 flex-direction: column;
-                min-height: 300px;
+                min-height: 240px;
+                max-width: 170px;
+                margin-inline-end: 10px;
+                
                 
                 img {
-                width: 150px;
-                height: 200px;
-                margin: 10px;
+                width: 120px;
+                height: 160px;
             }
 
                 p {
-                    padding: 0 10px;
+                    padding: 10px 0;
                     font-size: 0.8rem;
+                    max-width: 120px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
                 }
 
                 button {
                     position: absolute;
-                    width: 105px;
+                    width: 65px;
                     height: 25px;
-                    bottom: 0;
+                    bottom: 15px;
                     
                 }
             }

@@ -40,7 +40,7 @@ export const getSearchedMovies = async (searchText: string): Promise<IMovie[]> =
 
 export const getMovieById = async (id: string): Promise<IMovie> => {
   try {
-    const response = await get<IMovie>(`i=${id}`);
+    const response = await get<IMovie>(`products/${id}`);
     return response.data;
   } catch (error) {
     console.log(error);
