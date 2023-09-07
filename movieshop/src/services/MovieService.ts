@@ -30,7 +30,7 @@ export const getCategories = async (): Promise<ICategory[]> => {
 
 export const getSearchedMovies = async (searchText: string): Promise<IMovie[]> => {
   try {
-    const response = await get<IMovie[]>(`s=${searchText}`);
+    const response = await get<IMovie[]>(`search?searchtext=${searchText}`);
     return response.data;
   } catch (error) {
     console.log(error);
