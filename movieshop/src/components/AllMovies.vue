@@ -8,7 +8,7 @@ import { handleImgError } from '@/helpers/index'
 import type { IMovie } from '@/models/IMovie'
 import { getCategories, getMovies } from '@/services/MovieService'
 import { type ICategory } from '@/models/ICategory'
-import {cart} from '@/helpers/cart'
+import {cart} from '@/stores/cart'
 
 
 // const moviesStore = useMoviesStore();

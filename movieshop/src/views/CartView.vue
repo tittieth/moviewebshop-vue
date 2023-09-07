@@ -1,14 +1,17 @@
 <script setup lang="ts">
-    import OrderForm from "@/components/OrderForm.vue";
-    import { cart } from "@/helpers/cart";
-
-    const cartItems = cart.value
-    console.log('cartview' + cartItems);
-    
+import CartItems from '@/components/CartItems.vue'
+import OrderForm from '@/components/OrderForm.vue'
 </script>
-  
+
 <template>
-    <div v-for="item in cart" :key="item.productId">{{ item.product }}</div>
-    <h1>Hello from cartview</h1>
-    <OrderForm></OrderForm>
+  <h1>Din varukorg</h1>
+  <CartItems />
+  <OrderForm></OrderForm>
 </template>
+
+<style lang="scss" scoped>
+h1 {
+  text-align: center;
+  margin: 30px;
+}
+</style>

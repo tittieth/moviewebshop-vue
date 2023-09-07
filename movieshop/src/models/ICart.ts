@@ -3,4 +3,5 @@ export interface ICart {
     product: string
     amount: number
     price: number
+    imageUrl: string
 }

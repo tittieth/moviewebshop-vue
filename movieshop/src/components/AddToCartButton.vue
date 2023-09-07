@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { IMovie } from '@/models/IMovie'
-import { cart } from '@/helpers/cart'
+import { cart } from '@/stores/cart'
 
 export interface IMovieViewProps {
   movie: IMovie | null
@@ -11,14 +11,14 @@ const props = defineProps<IMovieViewProps>()
 const addToCart = () => {
   if (props.movie) {
     console.log('tillagd i varukorgen: ', props.movie.name)
-    const { id, name, price } = props.movie
+    const { id, name, price, imageUrl } = props.movie
 
     const existingProduct = cart.value.find((item) => item.productId === id)
 
     if (existingProduct) {
       existingProduct.amount++
     } else {
-      cart.value.push({ productId: id, product: name, amount: 1, price })
+      cart.value.push({ productId: id, product: name, amount: 1, price, imageUrl: imageUrl })
     }
   } else {
     console.log('error')
