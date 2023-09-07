@@ -1,5 +1,3 @@
-import type { ICategory } from "./ICategory";
-
 export interface IMovie {
     id: number;
     name: string;
@@ -9,7 +7,7 @@ export interface IMovie {
     year: number;
     added: string;
     productCategory: [{
-        categoryId: number,
-        category: string
-    }]
+        categoryId: number;
+        category: string;
+}]
 }
