@@ -50,12 +50,12 @@ import { type ICategory } from '@/models/ICategory';
       <div v-for="category in categories" :key="category.id" class="category">
         <h2>{{ category.name }}</h2>
         <ul class="movies">
-          <li v-for="movie in movies" :key="movie.id" @click.prevent="handleClick(movie)">
-            <div v-if="movie.productCategory.some(cat => cat.categoryId === category.id)">
-                <img :src="movie.imageUrl" height="50" width="50" @error="handleImgError(movie)">
-                <p>{{ movie.name }}</p>
-                <RouterLink :to="{ name: 'movie', params: { id: movie.id }, query: { selectedMovie: JSON.stringify(movie) } }">
-                  <button @click.prevent="addToCart(movie)">Köp film</button>
+            <li v-for="movie in movies" :key="movie.id" @click.prevent="handleClick(movie)">
+                <div v-if="movie.productCategory.some(cat => cat.categoryId === category.id)">
+                    <RouterLink :to="{ name: 'movie', params: { id: movie.id }, query: { selectedMovie: JSON.stringify(movie) } }">
+                    <img :src="movie.imageUrl" height="50" width="50" @error="handleImgError(movie)">
+                    <p>{{ movie.name }}</p>
+                    <button>Köp film</button>
                 </RouterLink>
             </div>
           </li>
