@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { IMovie } from '@/models/IMovie';
 import type { PropType } from 'vue';
+import AddToCartButton from './AddToCartButton.vue';
 
 const props = defineProps({
   selectedMovie: {
@@ -26,7 +27,7 @@ const props = defineProps({
                 <li>Premiär: {{ selectedMovie.year }}</li>
                 <li>Pris: {{ selectedMovie.price }}:-</li>
             </ul>
-            <button>Köp</button>
+            <AddToCartButton :movie="props.selectedMovie"/>
         </div>
 
         <div class="movie-description">
