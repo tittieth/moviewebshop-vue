@@ -87,7 +87,6 @@ const props = defineProps({
 
     h2 {
         margin: 20px 0 30px 0;
-        font-size: 48px;
     }
     .selected-movie {
         display: grid;
@@ -111,7 +110,6 @@ const props = defineProps({
 
         h3 {
             margin-left: 15px;
-            font-size: 32px;
         }
 
         ul {
@@ -132,10 +130,6 @@ const props = defineProps({
     .movie-description {
         grid-area: moviedesc;
         margin-top: 50px;
-
-        h4 {
-            font-size: 28px;
-        }
 
         p {
             font-size: 20px;

@@ -67,7 +67,7 @@ form {
     }
 
     .nav-icon-parent {
-            width: 20px;
+        width: 20px;
     }
 
     .nav-icon-path {
@@ -113,11 +113,28 @@ h4 {
 }
 
 @media screen and (min-width: 1024px) {
+
+    h2 {
+        margin: 40px;
+    }
+
+    input {
+        width: 500px;
+        min-height: 48px;
+        font-size: 20px;
+    }
+
+    .nav-icon-parent {
+        position: absolute;
+        margin: -10px 0 0 -20px;
+        min-width: 30px;
+    }
+
     .search-results-container {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        margin: 5% 10%;
+        margin: 2% 10%;
         border: 1px solid #5A082D;
         border-radius: 20px 20px 0 0;
 
@@ -126,6 +143,12 @@ h4 {
 
             .image-container {
                 width: 300px;
+            }
+
+            button {
+                font-size: 20px;
+                min-width: 150px;
+                height: 48px;
             }
 
         }
