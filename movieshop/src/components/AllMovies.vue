@@ -2,11 +2,14 @@
 import { onMounted, ref } from 'vue'
 import ActionMovies from '../components/ActionMovies.vue'
 import MovieHeader from '../components/MovieHeader.vue'
+import AddToCartButton from '../components/AddToCartButton.vue'
 import { handleImgError } from '@/helpers/index'
 // import { useMoviesStore } from '@/stores/movies'
 import type { IMovie } from '@/models/IMovie'
 import { getCategories, getMovies } from '@/services/MovieService'
 import { type ICategory } from '@/models/ICategory'
+import {cart} from '@/stores/cart'
+
 
 // const moviesStore = useMoviesStore();
 // const movies = moviesStore.movies;
@@ -28,14 +31,6 @@ onMounted(async () => {
     console.log(error)
   }
 })
-
-const handleClick = (movie: IMovie) => {
-  console.log('clicked movie', movie.id)
-}
-
-const addToCart = (movie: IMovie) => {
-  console.log('tillagd i varukorgen' + movie.price)
-}
 </script>
 
 <template>
@@ -44,7 +39,7 @@ const addToCart = (movie: IMovie) => {
     <div v-for="category in categories" :key="category.id" class="category">
       <h2>{{ category.name }}</h2>
       <ul class="movies">
-        <li v-for="movie in movies" :key="movie.id" @click.prevent="handleClick(movie)">
+        <li v-for="movie in movies" :key="movie.id">
           <div v-if="movie.productCategory.some((cat) => cat.categoryId === category.id)">
             <RouterLink
               :to="{
@@ -56,7 +51,7 @@ const addToCart = (movie: IMovie) => {
               <img :src="movie.imageUrl" height="50" width="50" @error="handleImgError(movie)" />
             </RouterLink>
               <p>{{ movie.name }}</p>
-              <button @click.prevent="addToCart(movie)">Köp film</button>
+              <AddToCartButton :movie="movie" :cart="cart"/>
           </div>
         </li>
       </ul>
