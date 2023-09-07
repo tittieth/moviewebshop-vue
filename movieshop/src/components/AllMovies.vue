@@ -8,6 +8,8 @@ import { handleImgError } from '@/helpers/index'
 import type { IMovie } from '@/models/IMovie'
 import { getCategories, getMovies } from '@/services/MovieService'
 import { type ICategory } from '@/models/ICategory'
+import {cart} from '@/helpers/cart'
+
 
 // const moviesStore = useMoviesStore();
 // const movies = moviesStore.movies;
@@ -49,7 +51,7 @@ onMounted(async () => {
               <img :src="movie.imageUrl" height="50" width="50" @error="handleImgError(movie)" />
             </RouterLink>
               <p>{{ movie.name }}</p>
-              <AddToCartButton :movie="movie" />
+              <AddToCartButton :movie="movie" :cart="cart"/>
           </div>
         </li>
       </ul>
