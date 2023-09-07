@@ -140,6 +140,7 @@ h4 {
 
         .single-movie-container {
             flex: 30%;
+            margin-top: 20px;
 
             .image-container {
                 width: 300px;
