@@ -36,10 +36,14 @@ const handleSubmit = () => {
     <h3>Resultat</h3>
 
     <div class="search-results-container">
-        <div v-for="movie in movies" :key="movie.id">
+        <div v-for="movie in movies" :key="movie.id" class="single-movie-container">
     
-            <img :src="movie.imageUrl" alt="Movie Poster" height="250" width="250"/>
+            <div class="image-container">
+                <img :src="movie.imageUrl" alt="Movie Poster" height="250" width="250"/>
+            </div>
+
             <h4>{{ movie.name }}</h4>
+            <button>Köp film</button>
         </div>
     </div>
 </template>
@@ -80,12 +84,31 @@ h3 {
     text-align: center;
 }
 
+h4 {
+    margin: 5px;
+}
+
 .search-results-container {
     text-align: center;
 
-    div {
+    .single-movie-container {
         padding: 20px;
         border-bottom: 2px solid #5A082D;
+
+        .image-container {
+        width: 200px;
+        margin: auto;
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+
+        button {
+            margin: 10px;
+        }
     }
 }
 
@@ -94,12 +117,16 @@ h3 {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        margin: 5% 20%;
+        margin: 5% 10%;
         border: 1px solid #5A082D;
         border-radius: 20px 20px 0 0;
 
-        div {
+        .single-movie-container {
             flex: 30%;
+
+            .image-container {
+                width: 300px;
+            }
 
         }
     }
