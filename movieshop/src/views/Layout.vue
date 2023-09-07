@@ -8,7 +8,6 @@
   </template>
   
   <script setup lang="ts">
-    import OrderForm from "@/components/OrderForm.vue";
 import NavView from "./NavView.vue";
   </script>
   

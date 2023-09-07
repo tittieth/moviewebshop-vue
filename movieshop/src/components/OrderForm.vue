@@ -60,19 +60,6 @@ form {
     padding: 20px;
 }
 
-input {
-    background-color: #33030D;
-    color: #FDE4E4;
-    border-radius: 60px;
-    border: 1px solid #5A082D;
-
-    margin: 5px 0 30px 0;
-    padding: 8px;
-
-    height: 32px;
-    width: 240px;
-}
-
 button {
     max-width: 100px;
 }
