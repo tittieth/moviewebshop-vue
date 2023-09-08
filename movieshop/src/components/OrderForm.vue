@@ -1,70 +1,98 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { Form, Field } from 'vee-validate';
 import  CardInputs  from '../components/CardInputs.vue'
 
-export default {
-  components: {
-    Form,
-    Field,
-  },
-  methods: {
-    onSubmit() {
-      console.log('Submitting :(');
-    },
-  },
-};
+interface IPayment {
+  firstname: string;
+  lastname: string;
+  adress: string;
+  postNumber: string;
+  email: string;
+  phoneNumber: string;
+}
 
-const selectedPayment = ref("");
+  const payment = ref<IPayment>({firstname: "", lastname: "", adress: "", postNumber: "", email: "", phoneNumber: ""})
 
 
+  const selectedPayment = ref("");
+
+
+
+  function handleSubmit() {
+    console.log("payment:", payment);
+
+    if (/^[a-zA-Z]+$/.test(payment.value.firstname) 
+      && /^[a-zA-Z]+$/.test(payment.value.lastname) 
+      && /^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/.test(payment.value.email) 
+      && /^[A-ZÅÄÖa-zåäö]+\s+\d+$/.test(payment.value.adress) 
+      && /^07[\d]{1}-?[\d]{7}$/.test(payment.value.phoneNumber)) {
+      console.log("ja");
+    }
+     else {
+      console.log(payment.value.adress);
+      console.log(/^[a-zA-Z]+$/.test(payment.value.firstname));
+      console.log(/^[a-zA-Z]+$/.test(payment.value.lastname));
+      console.log(/^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/.test(payment.value.email));
+      console.log(/^[A-ZÅÄÖa-zåäö]+\s+\d+$/.test(payment.value.adress));
+    }  
+  }
+
+  function formatPhoneNumber(value: string) {
+    let phoneNumber = value.replace(/\D/g, '');
+
+    // const formattedPhoneNumber = phoneNumber.replace(/(\d{3})(\d{3})(\d{2})(\d{2})/g, '$1 $2 $3 $4');
+    const formattedPhoneNumber = phoneNumber.replace(/(\d{3})(\d{3})(?=\d{2})/g, '$1 $2');
+
+    payment.value.phoneNumber = formattedPhoneNumber;
+  }
+    
 
 </script>
 
 <template>
     <div class="order-form">
         <h2>Dina uppgifter</h2>
-        <Form @submit="onSubmit">
+        <form @submit.prevent="handleSubmit">
                 <label>
                     <span>Förnamn</span><br/>
-                    <Field name="firstname" type="text" />
+                    <input name="firstname" type="text" v-model="payment.firstname" placeholder="Anders" required/>
                 </label>
                 <label>
                     <span>Efternamn</span><br/>
-                    <Field name="lastname" type="text" />
+                    <input name="lastname" type="text" v-model="payment.lastname" placeholder="Johnsson" required/>
                 </label>
                 <label>
                     <span>Adress</span><br/>
-                    <Field name="address" type="text" />
+                    <input name="address" type="text" v-model="payment.adress" placeholder="Sjövägen 1" required/>
                 </label>
                 <label>
                     <span>Postnummer</span><br/>
-                    <Field name="postNumber" type="text" />
+                    <input name="postNumber" type="text" v-model="payment.postNumber" pattern="[0-9]{3} [0-9]{2}" placeholder="123 45" required/>
                 </label>              
                 <label>
                     <span>Mailadress</span><br/>
-                    <Field name="" type="email" />
+                    <input name="email" type="email" v-model="payment.email" placeholder="anders.johnsson@mail.se" required/>
                 </label>        
                 <label>
                     <span>Telefonnummer</span><br/>
-                    <Field name="phoneNumber" type="tel" />
+                    <input name="phoneNumber" type="tel" v-model="payment.phoneNumber" placeholder="070 123 45 67" required @input="() => formatPhoneNumber(payment.phoneNumber)"/>
                 </label> 
                 <span id="payment-text">Betalsätt</span>
                 <div class="payment-method-container">
                     <label>
                       <span>Faktura</span><br />
-                      <Field type="radio" name="payment_method" v-model="selectedPayment" value="bill" />
+                      <input type="radio" name="payment_method" v-model="selectedPayment" value="bill" required/>
                     </label>
                     <label>
                       <span>Kort</span><br />
-                      <Field type="radio" name="payment_method" v-model="selectedPayment" value="card" />
+                      <input type="radio" name="payment_method" v-model="selectedPayment" value="card" />
                     </label>            
                 </div>
 
                 <CardInputs v-if="selectedPayment === 'card'" />
 
                 <button>Köp</button>   
-        </Form>
+        </form>
     </div>
 
 </template>
