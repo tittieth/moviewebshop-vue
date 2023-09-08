@@ -14,3 +14,5 @@ en del med postman för att förstå exakt vad backenden vill ha skickat. Idag s
 
 
 ### Melvin 
+Igår kollade jag igenom kod för validering av formuläret vid betalsidan. Jag testade VeeValidate men lyckades inte få det att fungera.
+Idag ska jag tillsammans med Evelina skriva en egen validering av formuläret. 
