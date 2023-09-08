@@ -5,7 +5,8 @@
 > Yesterday I…, today I will…, I need help with…, I'm stuck with…, TIL…
 
 ### Evelina
-
+- Igår blev jag klar med söksidan och började kolla på alternativ till VeeValidate.
+- Idag ska jag och Melvin göra en egen validering av formuläret.
 
 ### Tittie 
 Igår jobbade jag med varukorgen, den är färdig för mobilvy. Gör den mer responsiv när vi fått all logik för appen färdigt. Sen satt jag
