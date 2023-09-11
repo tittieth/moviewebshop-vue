@@ -4,7 +4,7 @@
         id: 5;
     }
 
-    // const moviesByCategory = defineProps<IActionMovieProps[]>();
+    //const moviesByCategory = defineProps<IActionMovieProps[]>();
 
 </script>
 
