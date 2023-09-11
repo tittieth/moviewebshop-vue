@@ -157,7 +157,7 @@ button {
 
   button {
     font-size: 24px;
-    min-width: 150px;
+    min-width: 208%;
     height: 48px;
   }
 
@@ -167,7 +167,7 @@ button {
 
   #payment-text {
     position: relative;
-    left: 82%;
+    left: 88%;
   }
 
   .payment-method-container {
