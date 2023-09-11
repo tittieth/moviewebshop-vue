@@ -1,90 +1,99 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 
+const selectedPaymentMethod = ref('')
+const orderName = ref('');
+const emits = defineEmits(['submitOrder']);
+
+
+const handleSubmit = () => {
+  emits('submitOrder', orderName.value, selectedPaymentMethod.value)
+  console.log(orderName);
+}
 </script>
 
 <template>
-    <div class="order-form">
-        <h2>Dina uppgifter</h2>
-        <form>
-                <label>
-                    <span>Förnamn</span><br/>
-                    <input type="text" />
-                </label>
-                <label>
-                    <span>Efternamn</span><br/>
-                    <input type="text" />
-                </label>            
-                <label>
-                    <span>Mailadress</span><br/>
-                    <input type="email" />
-                </label>        
-                <label>
-                    <span>Telefonnummer</span><br/>
-                    <input type="tel" />
-                </label> 
-                <span id="payment-text">Betalsätt</span> <!-- Lägg till v-if om kort är vald, input för kortnummer-->
-                <div class="payment-method-container">
-                    <label>
-                      <span>Swish</span><br />
-                      <input type="radio" name="payment_method" />
-                    </label>
-                    <label>
-                      <span>Kort</span><br />
-                      <input type="radio" name="payment_method" />
-                    </label>            
-                </div>
-                <button>Köp</button>        
-        </form>
-    </div>
-
+  <div class="order-form">
+    <h2>Dina uppgifter</h2>
+    <form @submit.prevent="handleSubmit">
+      <label>
+        <span>Förnamn</span><br />
+        <input type="text" name="orderName" v-model="orderName"/>
+      </label>
+      <label>
+        <span>Efternamn</span><br />
+        <input type="text" />
+      </label>
+      <label>
+        <span>Mailadress</span><br />
+        <input type="email" />
+      </label>
+      <label>
+        <span>Telefonnummer</span><br />
+        <input type="tel" />
+      </label>
+      <span id="payment-text">Betalsätt</span>
+      <!-- Lägg till v-if om kort är vald, input för kortnummer-->
+      <div class="payment-method-container">
+        <label>
+          <span>Swish</span><br />
+          <input type="radio" name="payment_method" value="swish" v-model="selectedPaymentMethod" />
+        </label>
+        <label>
+          <span>Kort</span><br />
+          <input type="radio" name="payment_method" value="kort" v-model="selectedPaymentMethod" />
+        </label>
+      </div>
+      <button>Köp</button>
+    </form>
+  </div>
 </template>
 
 <style scoped lang="scss">
-
 .order-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
 
 h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    margin-top: 50px;
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 50px;
 }
 
 form {
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
 }
 
 button {
-    max-width: 100px;
+  max-width: 100px;
 }
 
 .payment-method-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-top: 10px;
-    padding: 20px;
-    
-    span {
-        margin-right: 20px;
-    }
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding: 20px;
 
-    input {
-        max-width: 50px;
-        height: 16px;
-    }
+  span {
+    margin-right: 20px;
+  }
+
+  input {
+    max-width: 50px;
+    height: 16px;
+  }
 }
 
 @media screen and (min-width: 1024px) {
   .order-form {
-    background-color: #9D0B28;
+    background-color: #9d0b28;
   }
 
   form {
@@ -92,7 +101,6 @@ button {
     grid-template-columns: 0.5fr 0.5fr;
     gap: 30px;
   }
-
 
   h2 {
     font-size: 48px;
@@ -110,7 +118,6 @@ button {
 
   span {
     font-size: 24px;
-
   }
 
   #payment-text {
@@ -122,8 +129,5 @@ button {
     position: relative;
     left: -50%;
   }
-  
 }
-
-
 </style>
