@@ -146,6 +146,8 @@ function handleMenuClick() {
   .desktop-nav-links {
     color: #FDE4E4;
     font-size: 1.3rem;
+    font-family: Arial;
+    text-decoration: none;
 
     &:hover {
       cursor: pointer;
