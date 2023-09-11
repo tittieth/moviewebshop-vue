@@ -16,11 +16,12 @@
             <span>CVC</span><br/>
             <input type="text" class="small-input" pattern="[0-9]{3}" required/>
         </label>                 
-    </div>
+    </div><br/>
 
 </template>
 
 <style scoped lang="scss">
+
     div {
         display: flex;
         flex-direction: column;
