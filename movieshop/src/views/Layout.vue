@@ -2,7 +2,7 @@
     <div>
         <NavView></NavView>
       <main>
-        <router-view></router-view>
+        <router-view><OrderForm></OrderForm></router-view>
       </main>
     </div>
   </template>
