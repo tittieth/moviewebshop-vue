@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import ActionMovies from '../components/ActionMovies.vue'
 import MovieHeader from '../components/MovieHeader.vue'
 import AddToCartButton from '../components/AddToCartButton.vue'
 import { handleImgError } from '@/helpers/index'
