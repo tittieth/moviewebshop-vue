@@ -54,6 +54,7 @@ const handleSubmit = async (name: string, paymentMethod: string) => {
     )
     console.log('order skapad' + response.data)
     await router.push({ path: '/orderconfirmation/', query: { ordername: order.createdBy }})
+    cart.value = [];
   } catch (error) {
     console.log(error)
   }

@@ -56,7 +56,6 @@ onMounted(async () => {
       </ul>
     </div>
   </div>
-  <ActionMovies :moviesByCategory="movies"></ActionMovies>
 </template>
 
 <style scoped lang="scss">
