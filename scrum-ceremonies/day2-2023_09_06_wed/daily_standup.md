@@ -15,4 +15,6 @@
 
 
 ### Melvin 
-
+- Igår parkodade jag tillsammans med min grupp för att få upp en grund för arbetet.
+  Vi gjorde bland annat navigeringen för mobil skärmar och började på filmerna som ska visas på startsidan.
+- Idag ska jag kolla på hur man arbetar med Pinia för att kunna tillämpa det i arbetet. 

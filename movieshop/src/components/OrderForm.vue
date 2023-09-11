@@ -109,7 +109,8 @@ interface IPayment {
 
 h2 {
     text-align: center;
-    margin-bottom: 20px
+    margin-bottom: 20px;
+    margin-top: 50px;
 }
 
 form {
