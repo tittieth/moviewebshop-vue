@@ -206,7 +206,7 @@ button {
   form {
     display: grid;
     grid-template-columns: 0.5fr 0.5fr;
-    gap: 30px;
+    gap: 22px;
   }
 
   h2 {
@@ -215,7 +215,7 @@ button {
 
   button {
     font-size: 24px;
-    min-width: 150px;
+    min-width: 208%;
     height: 48px;
   }
 
@@ -223,13 +223,14 @@ button {
     height: 40px;
   }
 
+
   span {
     font-size: 24px;
   }
 
   #payment-text {
     position: relative;
-    left: 85%;
+    left: 88%;
   }
 
   .payment-method-container {
