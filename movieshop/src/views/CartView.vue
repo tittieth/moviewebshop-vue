@@ -3,6 +3,7 @@ import CartItems from '@/components/CartItems.vue'
 import OrderForm from '@/components/OrderForm.vue'
 import { formatCurrentDate } from '@/helpers';
 import type { ICart } from '@/models/ICart';
+import router from '@/router';
 import { cart } from '@/stores/cart';
 import axios from 'axios';
 import { computed } from 'vue';
@@ -53,11 +54,12 @@ const handleSubmit = async (name: string, paymentMethod: string) => {
   
 
   try {
-    const response = await axios.post(
-      'https://medieinstitutet-wie-products.azurewebsites.net/api/orders',
-      order
-    )
-    console.log('order skapad' + response.data)
+    // const response = await axios.post(
+    //   'https://medieinstitutet-wie-products.azurewebsites.net/api/orders',
+    //   order
+    // )
+    // console.log('order skapad' + response.data)
+    await router.push({ path: '/orderconfirmation/'})
   } catch (error) {
     console.log(error)
   }
