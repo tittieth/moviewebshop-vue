@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import ActionMovies from '../components/ActionMovies.vue'
 import MovieHeader from '../components/MovieHeader.vue'
 import AddToCartButton from '../components/AddToCartButton.vue'
 import { handleImgError } from '@/helpers/index'
@@ -57,13 +56,15 @@ onMounted(async () => {
       </ul>
     </div>
   </div>
-  <ActionMovies :moviesByCategory="movies"></ActionMovies>
 </template>
 
 <style scoped lang="scss">
+  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800;900&display=swap");
+
 h2 {
   color: FDE4E4;
   font-size: 2rem;
+  font-family: 'Inter', sans-serif;
 }
 .wrapper {
   position: relative;
@@ -90,6 +91,7 @@ h2 {
     list-style: none;
     width: 100%;
     overflow-x: auto;
+    justify-content: center;
 
     li {
       cursor: pointer;
@@ -104,8 +106,8 @@ h2 {
         margin-inline-end: 10px;
 
         img {
-          width: 120px;
-          height: 160px;
+          width: 125px;
+          height: 167px;
         }
 
         p {
@@ -115,6 +117,7 @@ h2 {
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
+          font-family: Arial;
         }
 
         button {
