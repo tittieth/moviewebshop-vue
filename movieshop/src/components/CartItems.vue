@@ -1,7 +1,12 @@
 <script setup lang="ts">
 import { cart } from '@/stores/cart'
 import type { ICart } from '@/models/ICart'
-import { computed } from 'vue';
+
+interface ICartProps {
+  totalPrice: number
+}
+
+const props = defineProps<ICartProps>();
 
 const decrementAmount = (item: ICart) => {
   if (item.amount > 1) {
@@ -17,11 +22,6 @@ const removeItem = (item: ICart) => {
   cart.value = cart.value.filter((cartItem) => cartItem.productId !== item.productId)
 }
 
-const totalCartPrice = computed(() => {
-  return cart.value.reduce((total, item) => {
-    return total + item.price * item.amount
-  }, 0)
-})
 </script>
 
 <template>
@@ -87,7 +87,7 @@ const totalCartPrice = computed(() => {
   <tfoot>
     <tr>
       <td colspan="3" class="total-label">Totalt:</td>
-      <td class="total-amount">{{ totalCartPrice }}:-</td>
+      <td class="total-amount">{{ props.totalPrice }}:-</td>
       <td></td>
     </tr>
   </tfoot>
