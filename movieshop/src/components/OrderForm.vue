@@ -44,6 +44,15 @@ function handleSubmit() {
 
   emits('submitOrder', payment.value.firstname, selectedPayment.value)
   console.log(payment.value.firstname)
+
+  payment.value = {
+    firstname: '',
+    lastname: '',
+    adress: '',
+    postNumber: '',
+    email: '',
+    phoneNumber: ''
+  };
 }
 
 function formatPhoneNumber(value: string) {
