@@ -3,17 +3,11 @@ import CartItems from '@/components/CartItems.vue'
 import OrderForm from '@/components/OrderForm.vue'
 import { formatCurrentDate } from '@/helpers';
 import type { ICart } from '@/models/ICart';
+import type { IProduct } from '@/models/IProduct';
 import router from '@/router';
 import { cart } from '@/stores/cart';
 import axios from 'axios';
 import { computed } from 'vue';
-
-interface IProduct {
-  productId: number
-  product: string | null
-  amount: number
-  orderId: number
-}
 
 const totalCartPrice = computed(() => {
   return cart.value.reduce((total, item) => {
