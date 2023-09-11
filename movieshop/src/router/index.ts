@@ -34,6 +34,7 @@ const router = createRouter({
           path: '/orderconfirmation',
           name: 'confirmationview',
           component: ConfirmationView,
+          props: true,
         }
       ]
     },
