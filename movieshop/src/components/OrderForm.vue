@@ -148,7 +148,7 @@ button {
   form {
     display: grid;
     grid-template-columns: 0.5fr 0.5fr;
-    gap: 20px;
+    gap: 22px;
   }
 
   h2 {
@@ -159,9 +159,6 @@ button {
     font-size: 24px;
     min-width: 150px;
     height: 48px;
-
-    position: relative;
-    margin-left: 75%;
   }
 
   input {
@@ -170,7 +167,7 @@ button {
 
   #payment-text {
     position: relative;
-    left: 88%;
+    left: 82%;
   }
 
   .payment-method-container {
