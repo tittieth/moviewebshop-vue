@@ -2,7 +2,8 @@
 import type { IMovie } from '@/models/IMovie';
 import { getMovies, getSearchedMovies } from '@/services/MovieService';
 import { onMounted, ref } from 'vue';
-
+import  AddToCartButtonVue  from './AddToCartButton.vue';
+import {cart} from '@/stores/cart'
 
 const movies = ref<IMovie[]>([]);
 const searchText = ref<string>("");
@@ -55,7 +56,7 @@ const handleSubmit = () => {
                 </div>
 
                 <h4>{{ movie.name }}</h4>
-                <button>Köp film</button>
+                <AddToCartButtonVue :movie="movie" :cart="cart"></AddToCartButtonVue>
             </div>            
         </div>
 
