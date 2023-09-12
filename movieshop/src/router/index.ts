@@ -5,6 +5,8 @@ import MovieView from '../views/MovieView.vue'
 import CartView from '../views/CartView.vue'
 import SearchView from '../views/SearchView.vue'
 import ConfirmationView from '../views/ConfirmationView.vue'
+import NotFoundView from '@/views/NotFoundView.vue'
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -41,8 +43,12 @@ const router = createRouter({
           name: 'confirmationview',
           component: ConfirmationView,
           props: true,
-        }
-      ]
+        },
+      ],
+    },
+    {
+      path: '/:catchAll(.*)',
+      component: NotFoundView, 
     },
   ]
 })

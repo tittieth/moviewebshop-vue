@@ -8,7 +8,6 @@ import type { IProduct } from '@/models/IProduct';
 import router from '@/router';
 import { createOrder } from '@/services/MovieService';
 import { cart } from '@/stores/cart';
-import axios from 'axios';
 import { computed } from 'vue';
 
 const totalCartPrice = computed(() => {
