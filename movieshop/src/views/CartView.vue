@@ -3,16 +3,13 @@ import CartItems from '@/components/CartItems.vue'
 import OrderForm from '@/components/OrderForm.vue'
 import { formatCurrentDate } from '@/helpers';
 import type { ICart } from '@/models/ICart';
+import type { IOrder } from '@/models/IOrder';
+import type { IProduct } from '@/models/IProduct';
+import router from '@/router';
+import { createOrder } from '@/services/MovieService';
 import { cart } from '@/stores/cart';
 import axios from 'axios';
 import { computed } from 'vue';
-
-interface IProduct {
-  productId: number
-  product: string | null
-  amount: number
-  orderId: number
-}
 
 const totalCartPrice = computed(() => {
   return cart.value.reduce((total, item) => {
@@ -39,7 +36,7 @@ const handleSubmit = async (name: string, paymentMethod: string) => {
 
   const formattedDate = formatCurrentDate()
 
-  const order = {
+  const order: IOrder = {
     companyId: 0,
     created: formattedDate,
     createdBy: name,
@@ -53,11 +50,9 @@ const handleSubmit = async (name: string, paymentMethod: string) => {
   
 
   try {
-    const response = await axios.post(
-      'https://medieinstitutet-wie-products.azurewebsites.net/api/orders',
-      order
-    )
-    console.log('order skapad' + response.data)
+    await createOrder(order)
+    router.push({ path: '/orderconfirmation/', query: { ordername: order.createdBy }})
+    cart.value = [];
   } catch (error) {
     console.log(error)
   }

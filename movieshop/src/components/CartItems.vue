@@ -86,7 +86,7 @@ const removeItem = (item: ICart) => {
   </table>
   <tfoot>
     <tr>
-      <td colspan="3" class="total-label">Totalt:</td>
+      <td colspan="3" class="total-label">Summa:</td>
       <td class="total-amount">{{ props.totalPrice }}:-</td>
       <td></td>
     </tr>
