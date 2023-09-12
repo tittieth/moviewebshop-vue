@@ -119,12 +119,14 @@ function handleMenuClick() {
   right: 0;
   bottom: 0;
   margin: 20px;
+  z-index: 3;
 }
 
 .desktop-nav {
   display: flex;
   justify-content: space-between;
   padding: 20px;
+  background-color: #9D0B28;
 
   .nav-icon-parent {
     width: 25px;
@@ -169,7 +171,7 @@ function handleMenuClick() {
   width: 100%;
   height: 100%;
   border-radius: 60px;
-  background-color: #9d0b28;
+  background-color: #9D0B28;
   display: flex;
   justify-content: center;
 
