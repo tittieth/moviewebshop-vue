@@ -155,15 +155,21 @@ h4 {
     }
 
     .search-results-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+
         margin: 2% 10%;
         border: 1px solid #5A082D;
         border-radius: 20px 20px 0 0;
 
+        div {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;  
+        }
+
         .single-movie-container {
             flex: 30%;
+            flex-direction: column;
+            align-items: center;
             margin-top: 20px;
 
             .image-container {
