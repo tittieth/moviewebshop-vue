@@ -1,11 +1,8 @@
 <script setup lang="ts">
-import type SearchMoviesVue from '@/components/SearchMovies.vue';
-
-
-
+    import  SearchMovies from '../components/SearchMovies.vue';
 </script>
   
 
 <template>
-    <SearchMoviesVue></SearchMoviesVue>
+    <SearchMovies></SearchMovies>
 </template>
