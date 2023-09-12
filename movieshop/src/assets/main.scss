@@ -28,8 +28,12 @@ button {
   height: 32px;
   width: 100px;
 
+  transition: 0.3s ease-in-out;
+
   &:hover {
     cursor: pointer;
+    background-color: #33030D;
+    border: solid 1px #E90C33;
   }
 }
 
