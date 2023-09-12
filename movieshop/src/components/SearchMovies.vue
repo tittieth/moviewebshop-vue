@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { IMovie } from '@/models/IMovie';
-import { getSearchedMovies } from '@/services/MovieService';
+import { getMovies, getSearchedMovies } from '@/services/MovieService';
 import { onMounted, ref } from 'vue';
 
 
@@ -13,9 +13,15 @@ onMounted(async () => {
 });
 
 const searchMovies = async (searchText: string) => {
-  movies.value = await getSearchedMovies(searchText);
-  console.log(movies.value);
-  
+    if (searchText.length === 1) {
+        const allMovies = await getMovies();
+        movies.value = allMovies.filter(movie =>
+        movie.name.toLowerCase().startsWith(searchText.toLowerCase())
+        )
+    } else {
+        movies.value = await getSearchedMovies(searchText);
+    }
+    
   localStorage.setItem("searchText", searchText);
 }; 
 
