@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { IMovie } from '@/models/IMovie';
-import { getSearchedMovies } from '@/services/MovieService';
+import { getMovies, getSearchedMovies } from '@/services/MovieService';
 import { onMounted, ref } from 'vue';
 
 
@@ -13,8 +13,16 @@ onMounted(async () => {
 });
 
 const searchMovies = async (searchText: string) => {
-  movies.value = await getSearchedMovies(searchText);
-  
+
+    if (searchText.length === 1) {
+        const allMovies = await getMovies();
+        movies.value = allMovies.filter(movie =>
+        movie.name.toLowerCase().startsWith(searchText.toLowerCase())
+        )
+    } else {
+        movies.value = await getSearchedMovies(searchText);
+    }
+
   localStorage.setItem("searchText", searchText);
 }; 
 
@@ -34,15 +42,23 @@ const handleSubmit = () => {
     <h3>Resultat</h3>
 
     <div class="search-results-container">
-        <div v-for="movie in movies" :key="movie.id" class="single-movie-container">
-    
-            <div class="image-container">
-                <img :src="movie.imageUrl" alt="Movie Poster" height="250" width="250"/>
-            </div>
 
-            <h4>{{ movie.name }}</h4>
-            <button>Köp film</button>
+        <div v-if="movies.length === 0" class="no-results-container">
+            <p>Din sökning gav inga träffar</p>
         </div>
+
+        <div v-else>
+            <div v-for="movie in movies" :key="movie.id" class="single-movie-container">
+    
+                <div class="image-container">
+                    <img :src="movie.imageUrl" alt="Movie Poster" height="250" width="250"/>
+                </div>
+
+                <h4>{{ movie.name }}</h4>
+                <button>Köp film</button>
+            </div>            
+        </div>
+
     </div>
 </template>
 
@@ -107,6 +123,12 @@ h4 {
         button {
             margin: 10px;
         }
+    }
+}
+
+.no-results-container {
+    p {
+        padding: 20px;
     }
 }
 
