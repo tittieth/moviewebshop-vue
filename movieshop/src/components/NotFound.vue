@@ -5,7 +5,7 @@
     <div>
       <img src="../assets/images/kopiera.jpg" height="200" width="200" />
     </div>
-    <router-link to="/" class="home-link">Hem</router-link>
+    <router-link to="/" class="home-link">Tillbaka</router-link>
   </div>
 </template>
 
@@ -38,4 +38,26 @@
     margin-top: 15px;
   }
 }
+  @media screen and (min-width: 768px) {
+    .not-found {
+    width: 80%;
+
+    .home-link {
+        font-size: 2.5rem;
+    }
+    }
+
+  }
+
+  @media screen and (min-width: 1224px) { 
+    .not-found {
+        width: 50%;
+        margin-top: 40px;
+
+        .home-link {
+        font-size: 3.5rem;
+    }
+    }
+  }
+
 </style>
