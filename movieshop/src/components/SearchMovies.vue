@@ -78,6 +78,10 @@ form {
         background-color: #5a082d00;
         width: 20px;
         box-shadow: none;
+
+        &:hover {
+            border: none;
+        }
     }
 
     .nav-icon-parent {
