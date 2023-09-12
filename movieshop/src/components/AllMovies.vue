@@ -8,6 +8,9 @@ import type { IMovie } from '@/models/IMovie'
 import { getCategories, getMovies } from '@/services/MovieService'
 import { type ICategory } from '@/models/ICategory'
 import {cart} from '@/stores/cart'
+import 'vue3-carousel/dist/carousel.css'
+import { Carousel, Slide, Navigation } from 'vue3-carousel'
+import { useRouter } from 'vue-router';
 
 
 // const moviesStore = useMoviesStore();
@@ -20,6 +23,15 @@ import {cart} from '@/stores/cart'
 const movies = ref<IMovie[]>([])
 const categories = ref<ICategory[]>([])
 
+const router = useRouter();
+
+function settings() {
+  return {
+    itemsToShow: 1,
+		snapAlign: "start"
+  }
+}
+
 onMounted(async () => {
   try {
     movies.value = await getMovies()
@@ -28,7 +40,72 @@ onMounted(async () => {
   } catch (error) {
     console.log(error)
   }
+
+  settings();
 })
+
+const breakpoints = {
+  310: {
+    itemsToShow: 1.5,
+    snapAlign: "start"
+  },
+  360: {
+    itemsToShow: 2,
+    snapAlign: "start"
+  },
+  450: {
+    itemsToShow: 2.5,
+    snapAlign: "start"
+  },
+  540: {
+    itemsToShow: 3,
+    snapAlign: "start"
+  },
+  630: {
+    itemsToShow: 3.5,
+    snapAlign: "start"
+  },
+  720: {
+    itemsToShow: 4,
+    snapAlign: "center"
+  },
+  810: {
+    itemsToShow: 4.5,
+    snapAlign: "center"
+  },
+  900: {
+    itemsToShow: 5,
+    snapAlign: "center"
+  },
+  990: {
+    itemsToShow: 5.5,
+    snapAlign: "center"
+  },
+  1080: {
+    itemsToShow: 6,
+    snapAlign: "center"
+  },
+  1170: {
+    itemsToShow: 6,
+    snapAlign: "center"
+  },
+}
+
+function filteredMovies(categoryId: number) {
+  return movies.value.filter((movie) =>
+    movie.productCategory.some((cat) => cat.categoryId === categoryId)
+  );
+}
+
+function showClickedMovie(movie: IMovie) {
+  const routeParams = {
+    name: 'movie',
+    params: { id: movie.id },
+    query: { selectedMovie: JSON.stringify(movie) }
+  };
+
+  router.push(routeParams);
+}
 </script>
 
 <template>
@@ -36,23 +113,28 @@ onMounted(async () => {
   <div class="wrapper">
     <div v-for="category in categories" :key="category.id" class="category">
       <h2>{{ category.name }}</h2>
-      <ul class="movies">
-        <li v-for="movie in movies" :key="movie.id">
-          <div v-if="movie.productCategory.some((cat) => cat.categoryId === category.id)">
-            <RouterLink
-              :to="{
-                name: 'movie',
-                params: { id: movie.id },
-                query: { selectedMovie: JSON.stringify(movie) }
-              }"
-            >
-              <img :src="movie.imageUrl" height="50" width="50" @error="handleImgError(movie)" />
-            </RouterLink>
-              <p>{{ movie.name }}</p>
-              <AddToCartButton :movie="movie" :cart="cart"/>
-          </div>
-        </li>
-      </ul>
+      <div class="carousel-items-container">
+        <carousel :settings="settings" :breakpoints="breakpoints" class="carousel">
+          <slide v-for="movie in filteredMovies(category.id)" :key="movie.id" class="category">
+              <div class="carousel__item">
+              <!-- <router-link :to="`/movie/${movie._id}`"> -->
+                <div class="movie-poster-container">
+                  <div class="image-container">
+                    <img :src="movie.imageUrl"  alt="" @click="() => showClickedMovie(movie)" @error="handleImgError(movie)" >
+                  </div>
+                  <div class="movie-bottom-container">
+                    <p>{{movie.name }}</p>
+                    <AddToCartButton :movie="movie" :cart="cart"/>
+                  </div>
+                </div>
+              </div>
+          </slide>
+
+          <template #addons>
+            <navigation />
+          </template>
+        </carousel>
+      </div>
     </div>
   </div>
 </template>
@@ -60,73 +142,57 @@ onMounted(async () => {
 <style scoped lang="scss">
   @import url("https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800;900&display=swap");
 
-h2 {
-  color: FDE4E4;
-  font-size: 2rem;
-  font-family: 'Inter', sans-serif;
-}
-.wrapper {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  text-align: center;
-}
-.category {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 50px;
-  padding: 10px;
+  h2 {
+    color: #FDE4E4;
+    font-size: 2rem;
+    font-family: 'Inter', sans-serif;
+    text-align: center;
+  }
 
-  ul {
-    display: flex;
-    flex-direction: row;
-    padding: 0;
-    margin-inline-start: 0;
-    margin-top: 50px;
-    list-style: none;
-    width: 100%;
-    overflow-x: auto;
-    justify-content: center;
+  p {
+    padding: 10px 0;
+    font-size: 0.8rem;
+    max-width: 120px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: Arial;
+    margin: auto;
+  }
 
-    li {
-      cursor: pointer;
-      text-align: left;
+
+  .wrapper {
+    padding: 10px;
+    max-width: 1170px;
+    margin: auto;
+
+    .image-container {
       position: relative;
+      display: block;
+      width: 100%;
+      height: 244px;
 
-      div {
-        display: flex;
-        flex-direction: column;
-        min-height: 240px;
-        max-width: 170px;
-        margin-inline-end: 10px;
+      &::after {
+        box-sizing: inherit;
+      }
 
-        img {
-          width: 125px;
-          height: 167px;
-        }
-
-        p {
-          padding: 10px 0;
-          font-size: 0.8rem;
-          max-width: 120px;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          font-family: Arial;
-        }
-
-        button {
-          position: absolute;
-          width: 65px;
-          height: 25px;
-          bottom: 15px;
-        }
+      &::before {
+        box-sizing: inherit;
+      }
+      
+      img {
+        max-width: 100%;
+        height: 244px;
+        padding: 10px;
       }
     }
   }
-}
+
+  .movie-bottom-container {
+    margin-bottom: 50px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    
+  }
 </style>
