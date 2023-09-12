@@ -27,12 +27,7 @@ const createProductsObject = (cartItem: ICart) => {
 }
 
 const handleSubmit = async (name: string, paymentMethod: string) => {
-  console.log('form submitted')
-  console.log(name + paymentMethod);
-  
-
   const itemsArray: IProduct[] = cart.value.map((cartItem) => createProductsObject(cartItem))
-  console.log(itemsArray)
 
   const formattedDate = formatCurrentDate()
 
@@ -45,9 +40,6 @@ const handleSubmit = async (name: string, paymentMethod: string) => {
     status: 0,
     orderRows: itemsArray
   }
-
-  console.log(order);
-  
 
   try {
     await createOrder(order)

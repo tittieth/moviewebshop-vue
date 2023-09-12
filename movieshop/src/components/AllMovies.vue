@@ -24,7 +24,6 @@ onMounted(async () => {
   try {
     movies.value = await getMovies()
     categories.value = await getCategories()
-    console.log(movies.value)
     console.table(categories.value)
   } catch (error) {
     console.log(error)

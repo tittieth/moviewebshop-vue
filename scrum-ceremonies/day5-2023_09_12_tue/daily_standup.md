@@ -5,7 +5,8 @@
 > Yesterday I…, today I will…, I need help with…, I'm stuck with…, TIL…
 
 ### Evelina
-
+- Igår fixade jag till placeringen av några inputfält.
+- Idag ska jag göra lite css-fixar och försöka fixa sökbuggen.
 
 ### Tittie 
 Igår gjorde jag klart så att man kan skicka en order. Jag skapade även en enkel sida för orderbekräftelse. Inte klart vad jag ska jobba vidare med idag, 

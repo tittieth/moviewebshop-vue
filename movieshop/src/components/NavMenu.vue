@@ -8,7 +8,6 @@ let width = document.documentElement.clientWidth;
 
 function controlScreenSize() {
     if (width > 899) {
-        console.log("width", width);
         screenSize.value = true;
     } else {
         screenSize.value = false;

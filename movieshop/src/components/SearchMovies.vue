@@ -13,6 +13,7 @@ onMounted(async () => {
 });
 
 const searchMovies = async (searchText: string) => {
+
     if (searchText.length === 1) {
         const allMovies = await getMovies();
         movies.value = allMovies.filter(movie =>
@@ -26,7 +27,6 @@ const searchMovies = async (searchText: string) => {
 }; 
 
 const handleSubmit = () => {
-    console.log(searchText.value);
     searchMovies(searchText.value);
 } 
 
