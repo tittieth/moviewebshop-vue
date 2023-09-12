@@ -168,6 +168,7 @@ p {
   }
 }
 
+
 .movie-bottom-container {
   margin-bottom: 50px;
 }
@@ -217,5 +218,15 @@ p {
       }
     }
   }
+
+  .movie-bottom-container {
+  margin-bottom: 70px;
+
+  button {
+    font-size: 1rem;
+    width: 140px;
+    height: 48px;
+  }
+}
 }
 </style>
