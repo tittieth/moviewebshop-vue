@@ -100,7 +100,10 @@ onMounted(() => {
 }
 
 .desktop-nav {
+  position: fixed;
+  z-index: 4;
   display: flex;
+  width: 100%;
   justify-content: space-between;
   padding: 20px;
   background-color: #9D0B28;
