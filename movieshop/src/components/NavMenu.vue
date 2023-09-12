@@ -102,6 +102,7 @@ onMounted(() => {
 .desktop-nav {
   position: fixed;
   z-index: 4;
+  top: 0;
   display: flex;
   width: 100%;
   justify-content: space-between;
