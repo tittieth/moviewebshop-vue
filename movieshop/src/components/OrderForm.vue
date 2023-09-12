@@ -24,7 +24,6 @@ const selectedPayment = ref('')
 const emits = defineEmits(['submitOrder'])
 
 function handleSubmit() {
-  console.log('payment:', payment)
 
   if (
     /^[a-zA-Z]+$/.test(payment.value.firstname) &&

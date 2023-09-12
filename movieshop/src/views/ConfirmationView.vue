@@ -3,7 +3,6 @@ import { useRoute } from 'vue-router'
 
 const route = useRoute()
 const orderName = route.query.ordername
-console.log(orderName)
 </script>
 
 <template>

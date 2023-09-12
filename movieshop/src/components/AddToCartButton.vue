@@ -10,7 +10,6 @@ const props = defineProps<IMovieViewProps>()
 
 const addToCart = () => {
   if (props.movie) {
-    console.log('tillagd i varukorgen: ', props.movie.name)
     const { id, name, price, imageUrl } = props.movie
     const cartCopy = [...cart.value]
     const existingProduct = cartCopy.find((item) => item.productId === id)
@@ -25,7 +24,6 @@ const addToCart = () => {
   } else {
     console.log('error')
   }
-  console.log(cart.value)
 }
 </script>
 

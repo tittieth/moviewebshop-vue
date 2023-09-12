@@ -14,13 +14,11 @@ onMounted(async () => {
 
 const searchMovies = async (searchText: string) => {
   movies.value = await getSearchedMovies(searchText);
-  console.log(movies.value);
   
   localStorage.setItem("searchText", searchText);
 }; 
 
 const handleSubmit = () => {
-    console.log(searchText.value);
     searchMovies(searchText.value);
 } 
 

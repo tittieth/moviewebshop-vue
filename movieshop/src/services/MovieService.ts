@@ -51,8 +51,7 @@ export const getMovieById = async (id: string): Promise<IMovie> => {
 
 export const createOrder = async (order: IOrder) => {
   try {
-    const response = await axios.post(`${BASE_URL}/orders`, order)
-    console.log('order skapad' + response)
+    const response = await axios.post(`${BASE_URL}/orders`, order))
     return response
   } catch (error) {
     console.log(error)
