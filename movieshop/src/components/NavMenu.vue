@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 
 const menuOpen = ref(false)
 const screenSize = ref();
@@ -30,7 +30,12 @@ function init() {
     }
 }
 
-init(); 
+onMounted(() => {
+  init();
+  controlScreenSize();
+})
+
+ 
 
 function handleMenuClick() {
   menuOpen.value = !menuOpen.value
