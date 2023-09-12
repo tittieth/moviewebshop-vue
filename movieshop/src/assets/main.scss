@@ -46,6 +46,26 @@ input {
   width: 240px;
 }
 
+a:link {
+  color: white;
+  text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+  color: white;
+}
+
+/* mouse over link */
+a:hover {
+  color: #E90C33;
+}
+
+/* selected link */
+a:active {
+  color: #E90C33;
+}
+
 @media screen and (min-width: 1024px) {
   h2 {
     font-size: 48px;
