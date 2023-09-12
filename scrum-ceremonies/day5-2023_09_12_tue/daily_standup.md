@@ -13,3 +13,5 @@ vi har en den buggar att fixa och ska även göra css:en för tablet/desktop.
 
 
 ### Melvin 
+Igår arbetade jag med navbaren för desktop versionen av webbsidan. 
+Idag ska jag fixa en bugg som blev där och jobba med lite småfix som behövs innan deadline. 
