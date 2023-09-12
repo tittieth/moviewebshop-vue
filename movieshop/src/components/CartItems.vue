@@ -99,7 +99,7 @@ const removeItem = (item: ICart) => {
   margin: auto;
   
   th, td {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #5A082D;
   }
 
   th {
