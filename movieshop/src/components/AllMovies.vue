@@ -3,6 +3,7 @@ import { onMounted, ref } from 'vue'
 import MovieHeader from '../components/MovieHeader.vue'
 import AddToCartButton from '../components/AddToCartButton.vue'
 import { handleImgError } from '@/helpers/index'
+// import { useMoviesStore } from '@/stores/movies'
 import type { IMovie } from '@/models/IMovie'
 import { getCategories, getMovies } from '@/services/MovieService'
 import { type ICategory } from '@/models/ICategory'
@@ -10,6 +11,13 @@ import { cart } from '@/stores/cart'
 import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide, Navigation } from 'vue3-carousel'
 import { useRouter } from 'vue-router'
+
+// const moviesStore = useMoviesStore();
+// const movies = moviesStore.movies;
+
+// onMounted(async ()=> {
+//     await moviesStore.fetchMovies();
+// });
 
 const movies = ref<IMovie[]>([])
 const categories = ref<ICategory[]>([])
@@ -133,7 +141,6 @@ p {
 
 .wrapper {
   padding: 10px;
-  // max-width: 1224px;
   width: 90%;
   margin: auto;
   cursor: pointer;

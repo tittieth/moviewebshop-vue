@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 
-const menuOpen = ref(false)
 const screenSize = ref();
 
 let width = document.documentElement.clientWidth;

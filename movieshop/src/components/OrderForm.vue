@@ -57,7 +57,6 @@ function handleSubmit() {
 function formatPhoneNumber(value: string) {
   let phoneNumber = value.replace(/\D/g, '')
 
-  // const formattedPhoneNumber = phoneNumber.replace(/(\d{3})(\d{3})(\d{2})(\d{2})/g, '$1 $2 $3 $4');
   const formattedPhoneNumber = phoneNumber.replace(/(\d{3})(\d{3})(?=\d{2})/g, '$1 $2')
 
   payment.value.phoneNumber = formattedPhoneNumber
