@@ -4,6 +4,7 @@ import { getMovies, getSearchedMovies } from '@/services/MovieService';
 import { onMounted, ref } from 'vue';
 import  AddToCartButtonVue  from './AddToCartButton.vue';
 import {cart} from '@/stores/cart'
+import { handleImgError } from '@/helpers/index'
 
 const movies = ref<IMovie[]>([]);
 const searchText = ref<string>("");
@@ -52,7 +53,7 @@ const handleSubmit = () => {
             <div v-for="movie in movies" :key="movie.id" class="single-movie-container">
     
                 <div class="image-container">
-                    <img :src="movie.imageUrl" alt="Movie Poster" height="250" width="250"/>
+                    <img :src="movie.imageUrl" alt="Movie Poster" height="250" width="250" @error="handleImgError(movie)"/>
                 </div>
 
                 <h4>{{ movie.name }}</h4>
