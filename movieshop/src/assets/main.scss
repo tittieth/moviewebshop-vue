@@ -3,7 +3,7 @@
 :root {
     background-color: #33030D;
     color: #FDE4E4;
-    margin: 72px 0 70px 0;
+    margin-bottom: 70px;
 }
 
 *,
@@ -72,6 +72,11 @@ a:active {
 }
 
 @media screen and (min-width: 1024px) {
+
+  :root {
+    margin-top: 72px;
+  }
+
   h2 {
     font-size: 48px;
   }
